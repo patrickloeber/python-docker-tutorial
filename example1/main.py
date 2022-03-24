@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 URL = 'http://www.imdb.com/chart/top'
 
 def main():
-    response = requests.get(URL, country="US")
+    response = requests.get(URL)
 
     soup = BeautifulSoup(response.text, 'html.parser')
 
