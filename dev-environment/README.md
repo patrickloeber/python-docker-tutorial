@@ -14,6 +14,15 @@ Work in progress
 Python versions, more than just a virtual env, ...
 ## 2. Dockerize an app
 
+```Dockerfile
+FROM python:3.10-slim
+WORKDIR /code
+COPY ./requirements.txt ./
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+COPY ./src ./src
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+```
+
 Use `Dockerfile` and the code in scr directory
 
 (Use slim or alpine for smaller versions)
@@ -34,6 +43,19 @@ docker run -d --name fastapi-container -p 80:80 fastapi-image
  ```
 ## 4. Use IDE in Docker
 ## 5. Docker Compose
+
+```yml
+services:
+  app:
+    build: .
+    container_name: python-server
+    command: uvicorn src.main:app --host 0.0.0.0 --port 80 --reload
+    ports:
+      - 80:80
+      - 5678:5678
+    volumes:
+      - .:/code
+```
 
 Use `docker-compose.yml`
 
