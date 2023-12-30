@@ -23,7 +23,7 @@ COPY ./src ./src
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
 ```
 
-Use `Dockerfile` and the code in scr directory
+Use `Dockerfile` and the code in src directory
 
 (Use slim or alpine for smaller versions)
 
